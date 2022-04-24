@@ -1,6 +1,23 @@
 <template>
-  <div class="wrapper__details">Details</div>
+  <div class="wrapper__details">
+    <base-spinner v-if="!character && loading"></base-spinner>
+    <character-info v-else :character="character"></character-info>
+  </div>
 </template>
+
+<script setup lang="ts">
+import CharacterInfo from '@/components/Character/CharacterInfo.vue';
+import BaseSpinner from '@/components/UI/BaseSpinner.vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
+const route = useRoute();
+const store = useStore();
+
+const character = computed(() => store.state.charactersModule.currentCharacter);
+const loading = computed(() => store.state.charactersModule.isLoading);
+store.dispatch('fetchCurrentCharacter', route.params.id);
+</script>
 
 <style lang="scss" scoped>
 .wrapper__details {
