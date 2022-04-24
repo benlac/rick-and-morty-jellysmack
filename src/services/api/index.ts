@@ -1,8 +1,4 @@
-interface Params {
-  name: string;
-  page: number;
-  status: string;
-}
+import { Params } from '@/models/store';
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -13,13 +9,11 @@ class Api {
   }
 
   get = async (params: Params | null) => {
-    console.log(params);
     const str = params
       ? Object.entries(params)
           .map(([key, val]) => `${key}=${val}`)
           .join('&')
       : '';
-    console.log(str);
     return await this.fetch(str, 'GET');
   };
 
@@ -30,7 +24,7 @@ class Api {
   fetch = async (path = '', method: Method = 'GET') => {
     const url = `${this.endpoint}${path}`;
     const req = {
-      method: method,
+      method,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

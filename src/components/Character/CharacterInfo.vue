@@ -8,7 +8,10 @@
       />
     </div>
     <div class="wrapper__character__right">
-      <div>
+      <div class="wrapper__character__right__name">
+        <button @click="goToHome" class="wrapper__character__button">
+          Back
+        </button>
         <h2>{{ character.name }}</h2>
         <p>{{ episodes }}</p>
       </div>
@@ -41,15 +44,23 @@
 </template>
 
 <script setup lang="ts">
-import { Character } from '../../models/character';
+import { Character } from '@/models/character';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 // eslint-disable-next-line
 const props = defineProps<{ character: Character }>();
 
-const episodes = `Present in ${props.character.episode.length} episodes`;
-console.log('props', props);
+const episodes = `Present in ${props.character.episode.length} ${
+  props.character.episode.length < 2 ? 'episode' : 'episodes'
+}`;
+
+function goToHome() {
+  router.go(-1);
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper__character {
   display: flex;
   align-items: center;
@@ -62,6 +73,27 @@ console.log('props', props);
 
   p {
     font-family: 'Inter', sans-serif;
+  }
+
+  .wrapper__character__button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 1s;
+
+    &:hover {
+      background: rgba(196, 196, 196, 0.174);
+      box-shadow: inset 4px -4px 4px rgba(165, 165, 165, 0.548),
+        inset -4px 4px 4px rgba(255, 255, 255, 0.548);
+      backdrop-filter: blur(32.8px);
+      transform: scale(1.1);
+    }
+  }
+  .wrapper__character__right__name {
+    margin: 0 2rem;
   }
 
   .wrapper__character__left {

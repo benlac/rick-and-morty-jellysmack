@@ -1,36 +1,36 @@
 <template>
   <div class="pagination">
-    <div
+    <button
       v-if="displayPrev"
       @click="handlePagination('first')"
       class="pagniation__item"
     >
-      First
-    </div>
-    <div
+      &#60;&#60;
+    </button>
+    <button
       v-if="displayPrev"
       @click="handlePagination('prev')"
       class="pagniation__item"
     >
-      Prev
-    </div>
+      &#60;
+    </button>
     <div class="pagniation__item__current">{{ displayNav }}</div>
-    <div
+    <button
       v-if="displayNext"
       @click="handlePagination('next')"
       class="pagniation__item"
     >
-      Next
-    </div>
-    <div
+      &#62;
+    </button>
+    <button
       v-if="displayNext"
       @click="handlePagination('last')"
       class="pagniation__item"
     >
-      Last
-    </div>
-    <div class="pagniation__item">400 hits</div>
+      &#62; &#62;
+    </button>
   </div>
+  <div>400 hits</div>
 </template>
 
 <script setup lang="ts">
@@ -109,26 +109,31 @@ function handlePagination(action: string) {
   justify-content: center;
   margin: 2rem;
   text-align: center;
+  background: #f0f0f0;
+  height: 30px;
+  align-items: center;
+  border-radius: 17px;
 
   .pagniation__item {
     color: #1baeca;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 0.8em;
+    color: #9b9b9b;
     cursor: pointer;
-    padding: 1rem;
+    // padding: 1rem;
+    background: transparent;
+    border: none;
   }
 
   .pagniation__item__current {
     padding: 0px;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    background: #1baeca;
+    // width: 50px;
+    // height: 50px;
+    // line-height: 50px;
+    // border-radius: 50%;
+    background: #3fb3ca;
     color: #fff;
-    font-size: 1.2em;
-    transition: 0.3s;
-    font-weight: bold;
+    font-size: 0.8em;
   }
 }
 </style>

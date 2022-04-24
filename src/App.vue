@@ -61,11 +61,9 @@ import TheHeader from './components/layout/TheHeader.vue';
     animation: move 6s linear infinite;
     filter: blur(168px);
     content: '';
-    width: 70vmax;
-    height: 70vmax;
     position: absolute;
-    left: -20vmin;
-    top: -20vmin;
+    right: 20%;
+    top: 50%;
     background: rgb(255, 255, 255);
     background: -moz-linear-gradient(
       319deg,
@@ -91,10 +89,6 @@ import TheHeader from './components/layout/TheHeader.vue';
     pointer-events: none;
     width: 20vmin;
     height: 20vmin;
-    left: auto;
-    right: 30vmin;
-    top: auto;
-    bottom: 0;
     transform-origin: 20% 20%;
     box-shadow: 25px -22px 183px 79px #fff;
     transform: rotateZ(160deg);

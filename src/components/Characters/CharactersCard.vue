@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'details', params: { id } }">
     <div class="card">
-      <img class="card__img" :src="image" alt="" />
+      <img class="card__img" :src="image" :alt="`picture of ${name}`" />
 
       <div class="card__wrapper__text">
         <p class="card__text">{{ name }}</p>
@@ -15,10 +15,7 @@
 const props = defineProps<{
   id: number;
   name: string;
-  image: {
-    type: string;
-    default: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
-  };
+  image: string;
 }>();
 </script>
 
@@ -36,11 +33,7 @@ a {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  // site
-
   overflow: hidden;
-
-  border-radius: 25px;
   box-shadow: 0 0 5px 0 hsla(0, 0%, 47.1%, 0.3);
   transition-duration: 0.3s;
   position: relative;
@@ -57,7 +50,6 @@ a {
       height: 45%;
     }
   }
-  // site
   .card__img {
     height: 70%;
     width: 100%;
