@@ -1,16 +1,5 @@
 import { Character } from '../../../models/character';
-
-interface State {
-  characters: Array<Character>;
-  currentCharacter: Character;
-  isLoading: boolean;
-}
-
-interface Params {
-  name: string;
-  page: number;
-  status: string;
-}
+import { Params, State } from '@/models/store';
 
 export default {
   setCharacters(state: State, payload: Array<Character>) {
@@ -21,5 +10,20 @@ export default {
   },
   setLoading(state: State, payload: boolean) {
     state.isLoading = payload;
+  },
+  setFilters(state: State, payload: Params) {
+    state.filters = payload;
+  },
+  setNextPage(state: State, payload: number | null) {
+    state.nextPage = payload;
+  },
+  setPrevPage(state: State, payload: number | null) {
+    state.prevPage = payload;
+  },
+  setTotalPages(state: State, payload: number) {
+    state.totalPages = payload;
+  },
+  setCurrentPage(state: State, payload: number) {
+    state.currentPage = payload;
   },
 };

@@ -48,7 +48,6 @@ import TheHeader from './components/layout/TheHeader.vue';
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0;
 
   &:before {
     @keyframes move {
@@ -89,7 +88,6 @@ import TheHeader from './components/layout/TheHeader.vue';
       rgba(168, 18, 18, 1) 60%,
       rgba(255, 255, 255, 1) 100%
     );
-    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
     pointer-events: none;
     width: 20vmin;
     height: 20vmin;

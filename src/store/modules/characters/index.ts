@@ -7,6 +7,11 @@ export default {
     return {
       characters: [],
       currentCharacter: null,
+      filters: {},
+      currentPage: 1,
+      totalPages: 0,
+      nextPage: null,
+      prevPage: null,
       isLoading: false,
     };
   },

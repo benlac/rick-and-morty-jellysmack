@@ -1,14 +1,10 @@
-import { Character } from '../../../models/character';
+import { State } from '@/models/store';
 
-interface AppState {
-  characters: Array<Character>; // List of all characters for current page
-  currentCharacter: Character;
-}
 export default {
-  getCharacters(state: AppState) {
+  getCharacters(state: State) {
     return state.characters;
   },
-  getCurrentCharacter(state: AppState) {
+  getCurrentCharacter(state: State) {
     return state.currentCharacter;
   },
 };
