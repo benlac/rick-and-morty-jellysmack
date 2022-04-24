@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper__filters">
-    <span v-for="el in status" :key="el" class="Filters_radio">
+    <span v-for="el in status" :key="el" class="filters__radio">
       <input
         type="radio"
         name="status"
@@ -39,7 +39,48 @@ function setFilter(status: string) {
 .wrapper__filters {
   display: flex;
   justify-content: center;
+  margin: 1rem 0 2rem;
 
+  .filters__radio {
+    display: flex;
+    justify-content: center;
+    > label {
+      cursor: pointer;
+    }
+    > input {
+      cursor: pointer;
+      margin-right: 0.6rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      &:checked::after {
+        transform: scale(1.6);
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #d3d955;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+      }
+      &::after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        background: transparent;
+        border: 2px solid #3f4558;
+      }
+    }
+  }
   span {
     margin: 0 0.4rem;
   }

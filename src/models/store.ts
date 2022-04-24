@@ -15,4 +15,5 @@ export interface State {
   totalPages: number;
   nextPage: number | null;
   prevPage: number | null;
+  error: boolean;
 }

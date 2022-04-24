@@ -13,6 +13,7 @@ export default {
       nextPage: null,
       prevPage: null,
       isLoading: false,
+      error: false,
     };
   },
   mutations,

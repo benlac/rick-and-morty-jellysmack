@@ -7,3 +7,13 @@
     />
   </header>
 </template>
+
+<style lang="scss" scoped>
+header {
+  padding-top: 2rem;
+
+  > img {
+    max-width: 100%;
+  }
+}
+</style>

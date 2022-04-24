@@ -1,28 +1,40 @@
 <template>
   <div class="wrapper__input">
-    <img
-      class="wrapper__input__search"
-      src="@/assets/img/search.svg"
-      alt=""
-      width="20"
-      @click="setSearchValue"
-    />
+    <button class="wrapper__input__search">
+      <img
+        src="@/assets/img/search.svg"
+        alt=""
+        width="20"
+        @click="setSearchValue"
+      />
+    </button>
     <input
       type="text"
       placeholder="Search for a characters..."
       v-model.trim="value"
+      @keyup.enter="setSearchValue"
     />
+    <button class="wrapper__input__reset">
+      <img
+        v-if="isTyping"
+        src="@/assets/img/cross.png"
+        width="40"
+        height="40"
+        alt=""
+        @click="clearFilters"
+      />
+    </button>
   </div>
-  <!-- <button @click="setSearchValue">submit</button> -->
-  <button @click="clearFilters">Clear filters</button>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 const value = ref<string>('');
+
+const isTyping = computed(() => value.value.length);
 
 function setSearchValue() {
   let newObj = { ...store.state.charactersModule.filters };
@@ -44,17 +56,30 @@ function clearFilters() {
 
 <style lang="scss" scoped>
 .wrapper__input {
-  margin-top: 2rem;
   display: flex;
   width: 20%;
-  margin: 2rem auto;
+  margin: 2rem auto 1rem auto;
   position: relative;
 
   .wrapper__input__search {
     position: absolute;
-    bottom: 30%;
+    background: transparent;
+    outline: none;
+    border: none;
+    bottom: 20%;
     z-index: 1;
-    left: 4%;
+    left: 2%;
+    cursor: pointer;
+  }
+
+  .wrapper__input__reset {
+    position: absolute;
+    outline: none;
+    background: transparent;
+    border: none;
+    top: 6%;
+    z-index: 1;
+    right: 1%;
     cursor: pointer;
   }
 
@@ -74,6 +99,10 @@ function clearFilters() {
     box-shadow: inset 4px -4px 4px rgba(165, 165, 165, 0.548),
       inset -4px 4px 4px rgba(255, 255, 255, 0.548);
     backdrop-filter: blur(32.8px);
+
+    &:focus {
+      color: #c7c7c7;
+    }
   }
 }
 </style>

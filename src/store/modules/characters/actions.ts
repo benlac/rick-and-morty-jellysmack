@@ -6,6 +6,7 @@ export default {
   async fetchCharacters({ commit }: { commit: Commit }, params: Params | null) {
     commit('setCharacters', []);
     commit('setLoading', true);
+    commit('setError', false);
     const api = new Api(`${process.env.VUE_APP_RICK_AND_MORTY_API}/character?`);
     const res = await api.get(params);
     if (!res.error) {
@@ -14,7 +15,6 @@ export default {
       commit('setLoading', false);
       commit('setTotalPages', res.info.pages);
       if (res.info.next !== null) {
-        console.log(res.info.next.match(/\?page=(\d)/m));
         const next = res.info.next.match(/\?page=(\d)/m)[1];
         commit('setNextPage', Number(next));
       }
@@ -27,24 +27,25 @@ export default {
       }
     } else {
       commit('setCharacters', []);
-      commit('setError', res.error);
+      commit('setError', true);
     }
   },
 
   async fetchCurrentCharacter({ commit }: { commit: Commit }, payload: number) {
     commit('setCurrentCharacter', null);
     commit('setLoading', true);
+    commit('setError', false);
 
     const api = new Api(`${process.env.VUE_APP_RICK_AND_MORTY_API}/character`);
     const res = await api.getById(payload);
-    // TODO: handle error
-
-    if (res) {
+    if (!res.error) {
       console.log(res);
       commit('setCurrentCharacter', res);
       commit('setLoading', false);
     } else {
-      console.log('err');
+      console.log('error', res);
+      commit('setCurrentCharacter', {});
+      commit('setError', true);
     }
   },
 };
