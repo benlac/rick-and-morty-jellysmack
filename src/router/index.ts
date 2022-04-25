@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import CharactersHome from '@/views/CharactersHome.vue';
+import CharactersList from '@/views/CharactersList.vue';
 import CharacterDetail from '@/views/CharacterDetail.vue';
 import NotFound from '@/views/NotFound.vue';
 
@@ -11,7 +11,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/characters',
     name: 'characters',
-    component: CharactersHome,
+    component: CharactersList,
   },
   {
     path: '/characters/:id',
