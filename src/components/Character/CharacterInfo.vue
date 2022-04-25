@@ -9,9 +9,7 @@
     </div>
     <div class="wrapper__character__right">
       <div class="wrapper__character__right__name">
-        <button @click="goToHome" class="wrapper__character__button">
-          Back
-        </button>
+        <base-button @click="goToHome"> Back </base-button>
         <h2 class="wrapper__character__right__name__title">
           {{ character.name }}
         </h2>
@@ -52,6 +50,7 @@
 <script setup lang="ts">
 import { Character } from '@/models/character';
 import { useRouter } from 'vue-router';
+import BaseButton from '@/components/UI/BaseButton.vue';
 
 const router = useRouter();
 // eslint-disable-next-line
@@ -76,31 +75,10 @@ function goToHome() {
   justify-content: center;
   padding-bottom: 2rem;
 
-  h2 {
-    font-family: 'Lilita One', cursive;
-  }
-
   p {
     font-family: 'Inter', sans-serif;
   }
 
-  .wrapper__character__button {
-    background: transparent;
-    color: #fff;
-    border: 1px solid grey;
-    border-radius: 20px;
-    padding: 0.4rem 1rem;
-    cursor: pointer;
-    transition: all 1s;
-
-    &:hover {
-      background: rgba(196, 196, 196, 0.174);
-      box-shadow: inset 4px -4px 4px rgba(165, 165, 165, 0.548),
-        inset -4px 4px 4px rgba(255, 255, 255, 0.548);
-      backdrop-filter: blur(32.8px);
-      transform: scale(1.1);
-    }
-  }
   .wrapper__character__right__name {
     margin: 0 2rem;
 

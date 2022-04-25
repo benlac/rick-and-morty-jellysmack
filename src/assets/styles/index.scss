@@ -1,9 +1,14 @@
 @import 'reset';
 @import 'vars';
+@import 'animations';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lilita+One&display=swap');
 
 img {
   max-width: 100%;
+}
+
+h2 {
+  font-family: 'Lilita One', cursive;
 }
 
 #app {
@@ -43,14 +48,6 @@ img {
   align-items: center;
 
   &:before {
-    @keyframes move {
-      0% {
-        transform: rotate(0deg) translate(-165px) rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg) translate(-165px) rotate(-360deg);
-      }
-    }
     animation: move 6s linear infinite;
     filter: blur(168px);
     content: '';

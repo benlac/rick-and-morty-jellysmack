@@ -39,7 +39,4 @@ export default {
   setCurrentPage(state: State, payload: number) {
     state.currentPage = payload;
   },
-  setError(state: State, payload: boolean) {
-    state.error = payload;
-  },
 };

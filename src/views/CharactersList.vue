@@ -1,6 +1,7 @@
 <template>
   <main class="wrapper__home">
-    <characters-wrapper-filters></characters-wrapper-filters>
+    <characters-search></characters-search>
+    <characters-filter></characters-filter>
     <not-found v-if="error">{{ error }}</not-found>
     <base-spinner
       v-else-if="!characters.length && loading && !error"
@@ -20,20 +21,20 @@
 </template>
 
 <script setup lang="ts">
+import CharactersCard from '@/components/Characters/CharactersCard.vue';
+import CharactersSearch from '@/components/Characters/Filters/CharactersSearch.vue';
+import CharactersFilter from '@/components/Characters/Filters/CharactersFilter.vue';
+import BaseSpinner from '@/components/UI/BaseSpinner.vue';
+import NotFound from '@/views/NotFound.vue';
+import ThePagination from '@/components/Characters/ThePagination.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
-import CharactersWrapperFilters from '../components/Characters/Filters/CharactersWrapperFilters.vue';
-import CharactersCard from '@/components/Characters/CharactersCard.vue';
-import BaseSpinner from '@/components/UI/BaseSpinner.vue';
-import NotFound from '@/views/NotFound.vue';
-import ThePagination from '../components/Characters/ThePagination.vue';
-
 const store = useStore();
+store.dispatch('fetchCharacters');
 const characters = computed(() => store.state.charactersModule.characters);
 const loading = computed(() => store.state.charactersModule.isLoading);
 const error = computed(() => store.state.charactersModule.error);
-store.dispatch('fetchCharacters');
 </script>
 
 <style lang="scss" scoped>

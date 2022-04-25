@@ -3,7 +3,7 @@
     <button class="wrapper__input__search">
       <img
         src="@/assets/img/search.svg"
-        alt=""
+        alt="search icon"
         width="20"
         @click="setSearchValue"
       />
@@ -20,7 +20,7 @@
         src="@/assets/img/cross.png"
         width="40"
         height="40"
-        alt=""
+        alt="cross icon"
         @click="clearFilters"
       />
     </button>
