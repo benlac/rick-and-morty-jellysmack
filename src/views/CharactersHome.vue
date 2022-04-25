@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import CharactersWrapperFilters from '../components/Characters/CharactersWrapperFilters.vue';
+import CharactersWrapperFilters from '../components/Characters/Filters/CharactersWrapperFilters.vue';
 import CharactersList from '../components/Characters/CharactersList.vue';
 import ThePagination from '../components/Characters/ThePagination.vue';
 
