@@ -74,6 +74,7 @@ function goToHome() {
   align-items: center;
   width: 100%;
   justify-content: center;
+  padding-bottom: 2rem;
 
   h2 {
     font-family: 'Lilita One', cursive;
