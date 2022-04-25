@@ -1,5 +1,4 @@
 import { Params } from '@/models/store';
-
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 class Api {

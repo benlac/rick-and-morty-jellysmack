@@ -1,5 +1,5 @@
 import { Character } from '../../../models/character';
-import { Params, State } from '@/models/store';
+import { Info, Params, State } from '@/models/store';
 
 export default {
   setInitRequest(state: State) {
@@ -22,15 +22,15 @@ export default {
   setFilters(state: State, payload: Params) {
     state.filters = payload;
   },
-  setManagePagination(state: State, info: any) {
+  setManagePagination(state: State, info: Info) {
     state.totalPages = info.pages;
     if (info.next !== null) {
-      const next = info.next.match(/\?page=([0-9]+)/m)[1];
-      state.nextPage = Number(next);
+      const next = info.next.match(/\?page=([0-9]+)/m);
+      state.nextPage = Number(next && next[1]);
     }
-    if (info.prev !== null) {
-      const prev = info.prev.match(/\?page=([0-9]+)/m)[1];
-      state.prevPage = Number(prev);
+    if (info!.prev !== null) {
+      const prev = info.prev.match(/\?page=([0-9]+)/m);
+      state.prevPage = Number(prev && prev[1]);
     }
     if (info.pages === 1) {
       state.currentPage = info.pages;

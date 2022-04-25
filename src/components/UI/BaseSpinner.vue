@@ -9,7 +9,6 @@
 <style lang="scss" scoped>
 .spinner {
   position: relative;
-  // margin: auto;
   width: 75px;
   height: 75px;
   transform: rotate(45deg);

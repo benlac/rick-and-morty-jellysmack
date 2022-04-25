@@ -6,8 +6,6 @@ img {
   max-width: 100%;
 }
 
-// linear-gradient(319deg, #d4da51 0%, rgb(191, 37, 37) 41%, rgb(168, 18, 18) 60%, #d4da51 100%);
-
 #app {
   font-family: 'Inter', sans-serif;
   background: rgb(31, 32, 56);
@@ -56,7 +54,6 @@ img {
     animation: move 6s linear infinite;
     filter: blur(168px);
     content: '';
-
     position: absolute;
     right: 20%;
     top: 50%;

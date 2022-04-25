@@ -18,7 +18,7 @@ This app use the [Rick and Morty REST API](https://rickandmortyapi.com/).
 # Features
 
 - Display the characters
-- Display one character, with
+- Display one character
 - Filter by status
 - Search by name
 - Responsive design

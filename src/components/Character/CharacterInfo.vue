@@ -12,7 +12,9 @@
         <button @click="goToHome" class="wrapper__character__button">
           Back
         </button>
-        <h2>{{ character.name }}</h2>
+        <h2 class="wrapper__character__right__name__title">
+          {{ character.name }}
+        </h2>
         <p>{{ episodes }}</p>
       </div>
       <div class="wrapper__character__block">
@@ -100,6 +102,10 @@ function goToHome() {
   }
   .wrapper__character__right__name {
     margin: 0 2rem;
+
+    .wrapper__character__right__name__title {
+      font-size: 2.2em;
+    }
   }
 
   .wrapper__character__left {
