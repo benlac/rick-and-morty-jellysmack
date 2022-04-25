@@ -4,7 +4,7 @@
 
 [![The Rick and Morty API](https://repository-images.githubusercontent.com/120371205/b6740400-92d4-11ea-8a13-d5f6e0558e9b)](https://rickandmortyapi.com)
 
-This app use the [Rick and Morty REST API](https://rickandmortyapi.com/).
+This app uses the [Rick and Morty REST API](https://rickandmortyapi.com/).
 
 # Stack
 
