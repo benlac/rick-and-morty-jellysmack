@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import CharactersCard from '@/components/Characters/CharactersCard';
+import CharactersCard from '@/components/Characters/CharactersCard.vue';
 import BaseSpinner from '@/components/UI/BaseSpinner.vue';
 import NotFound from '@/views/NotFound.vue';
 import { useStore } from 'vuex';

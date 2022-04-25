@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper__filters">
-    <span v-for="el in status" :key="el" class="filters__radio">
+    <span v-for="el in status" :key="el.id" class="filters__radio">
       <input
         type="radio"
         name="status"
@@ -39,7 +39,8 @@ function setFilter(status: string) {
 .wrapper__filters {
   display: flex;
   justify-content: center;
-  margin: 1rem 0 2rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 4rem;
 
   .filters__radio {
     display: flex;

@@ -61,6 +61,8 @@ function goToHome() {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/vars.scss';
+
 .wrapper__character {
   display: flex;
   align-items: center;
@@ -113,6 +115,37 @@ function goToHome() {
 
     div {
       margin: 0 2rem;
+    }
+  }
+}
+
+@media #{$medium-down} {
+  .wrapper__character {
+    .wrapper__character__left {
+      width: 50%;
+    }
+  }
+}
+
+@media #{$small-down} {
+  .wrapper__character {
+    flex-direction: column;
+    .wrapper__character__left {
+      width: auto;
+      .wrapper__character__left__img {
+        width: 270px;
+        height: 270px;
+      }
+    }
+    .wrapper__character__right {
+      .wrapper__character__right__name {
+        margin-top: 1rem;
+        text-align: center;
+      }
+      .wrapper__character__block {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   }
 }

@@ -55,6 +55,7 @@ function clearFilters() {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/vars.scss';
 .wrapper__input {
   display: flex;
   width: 20%;
@@ -103,6 +104,18 @@ function clearFilters() {
     &:focus {
       color: #c7c7c7;
     }
+  }
+}
+
+@media #{$medium-down} {
+  .wrapper__input {
+    width: 45%;
+  }
+}
+
+@media #{$small-down} {
+  .wrapper__input {
+    width: 85%;
   }
 }
 </style>
