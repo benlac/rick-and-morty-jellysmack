@@ -25,11 +25,11 @@ export default {
   setManagePagination(state: State, info: any) {
     state.totalPages = info.pages;
     if (info.next !== null) {
-      const next = info.next.match(/\?page=(\d)/m)[1];
+      const next = info.next.match(/\?page=([0-9]+)/m)[1];
       state.nextPage = Number(next);
     }
     if (info.prev !== null) {
-      const prev = info.prev.match(/\?page=(.*)/m)[1];
+      const prev = info.prev.match(/\?page=([0-9]+)/m)[1];
       state.prevPage = Number(prev);
     }
     if (info.pages === 1) {
