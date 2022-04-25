@@ -19,8 +19,6 @@ const store = useStore();
 const character = computed(() => store.state.charactersModule.currentCharacter);
 const loading = computed(() => store.state.charactersModule.isLoading);
 const error = computed(() => store.state.charactersModule.error);
-
-console.log(store.state.charactersModule.error);
 store.dispatch('fetchCurrentCharacter', route.params.id);
 </script>
 

@@ -38,6 +38,10 @@
           <h2>LOCATION</h2>
           <p>{{ character.location.name }}</p>
         </div>
+        <div v-if="character.type.length">
+          <h2>TYPE</h2>
+          <p>{{ character.type }}</p>
+        </div>
       </div>
     </div>
   </div>
