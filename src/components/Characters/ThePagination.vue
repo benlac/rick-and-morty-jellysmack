@@ -63,42 +63,56 @@ const displayNext = computed(
 function handlePagination(action: string) {
   switch (action) {
     case 'first':
-      store.commit('setFilters', {
-        ...store.state.charactersModule.filters,
-        page: 1,
-      });
-      store.commit('setCurrentPage', 1);
-      store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      if (store.state.charactersModule.currentPage !== 1) {
+        store.commit('setFilters', {
+          ...store.state.charactersModule.filters,
+          page: 1,
+        });
+        store.commit('setCurrentPage', 1);
+        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      }
       break;
     case 'prev':
-      store.commit('setFilters', {
-        ...store.state.charactersModule.filters,
-        page: store.state.charactersModule.prevPage,
-      });
-      store.commit(
-        'setCurrentPage',
-        store.state.charactersModule.currentPage - 1
-      );
-      store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      if (store.state.charactersModule.currentPage !== 1) {
+        store.commit('setFilters', {
+          ...store.state.charactersModule.filters,
+          page: store.state.charactersModule.prevPage,
+        });
+        store.commit(
+          'setCurrentPage',
+          store.state.charactersModule.currentPage - 1
+        );
+        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      }
       break;
     case 'next':
-      store.commit('setFilters', {
-        ...store.state.charactersModule.filters,
-        page: store.state.charactersModule.nextPage,
-      });
-      store.commit(
-        'setCurrentPage',
-        store.state.charactersModule.currentPage + 1
-      );
-      store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      if (
+        store.state.charactersModule.currentPage <
+        store.state.charactersModule.totalPages
+      ) {
+        store.commit('setFilters', {
+          ...store.state.charactersModule.filters,
+          page: store.state.charactersModule.nextPage,
+        });
+        store.commit(
+          'setCurrentPage',
+          store.state.charactersModule.currentPage + 1
+        );
+        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      }
       break;
     case 'last':
-      store.commit('setFilters', {
-        ...store.state.charactersModule.filters,
-        page: store.state.charactersModule.totalPages,
-      });
-      store.commit('setCurrentPage', store.state.charactersModule.totalPages);
-      store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      if (
+        store.state.charactersModule.currentPage <
+        store.state.charactersModule.totalPages
+      ) {
+        store.commit('setFilters', {
+          ...store.state.charactersModule.filters,
+          page: store.state.charactersModule.totalPages,
+        });
+        store.commit('setCurrentPage', store.state.charactersModule.totalPages);
+        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+      }
       break;
     default:
       throw new Error(`The action doesn't exist: ${action} `);
