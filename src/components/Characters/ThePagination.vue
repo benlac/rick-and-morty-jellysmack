@@ -1,36 +1,35 @@
 <template>
   <div class="pagination">
     <button
-      v-if="displayPrev"
+      :disabled="!displayPrev"
       @click="handlePagination('first')"
       class="pagniation__item"
     >
-      &#60;&#60;
+      1
     </button>
     <button
-      v-if="displayPrev"
+      :disabled="!displayPrev"
       @click="handlePagination('prev')"
       class="pagniation__item"
     >
-      &#60;
+      prev
     </button>
     <div class="pagniation__item__current">{{ displayNav }}</div>
     <button
-      v-if="displayNext"
+      :disabled="!displayNext"
       @click="handlePagination('next')"
       class="pagniation__item"
     >
-      &#62;
+      next
     </button>
     <button
-      v-if="displayNext"
+      :disabled="!displayNext"
       @click="handlePagination('last')"
       class="pagniation__item"
     >
-      &#62; &#62;
+      {{ displayTotalPages }}
     </button>
   </div>
-  <div>400 hits</div>
 </template>
 
 <script setup lang="ts">
@@ -42,6 +41,10 @@ const store = useStore();
 const displayNav = computed(
   () =>
     `${store.state.charactersModule.currentPage}/${store.state.charactersModule.totalPages}`
+);
+
+const displayTotalPages = computed(
+  () => store.state.charactersModule.totalPages
 );
 
 const displayPrev = computed(
@@ -109,31 +112,36 @@ function handlePagination(action: string) {
   justify-content: center;
   margin: 2rem;
   text-align: center;
-  background: #f0f0f0;
-  height: 30px;
   align-items: center;
-  border-radius: 17px;
 
   .pagniation__item {
-    color: #1baeca;
-    font-weight: bold;
-    font-size: 0.8em;
-    color: #9b9b9b;
-    cursor: pointer;
-    // padding: 1rem;
     background: transparent;
-    border: none;
-  }
-
-  .pagniation__item__current {
-    padding: 0px;
-    // width: 50px;
-    // height: 50px;
-    // line-height: 50px;
-    // border-radius: 50%;
-    background: #3fb3ca;
     color: #fff;
-    font-size: 0.8em;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 1s;
+    margin: 0 0.4rem;
+
+    &:hover {
+      background: rgba(196, 196, 196, 0.174);
+      box-shadow: inset 4px -4px 4px rgba(165, 165, 165, 0.548),
+        inset -4px 4px 4px rgba(255, 255, 255, 0.548);
+      backdrop-filter: blur(32.8px);
+      transform: scale(1.1);
+    }
+
+    &:disabled {
+      color: #dac8c8;
+      cursor: not-allowed;
+      &:hover {
+        background-color: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        transform: none;
+      }
+    }
   }
 }
 </style>

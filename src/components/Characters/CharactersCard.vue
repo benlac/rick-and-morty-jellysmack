@@ -63,8 +63,6 @@ a {
     height: 70%;
     width: 100%;
     object-fit: cover;
-    border-top-left-radius: 27px;
-    border-top-right-radius: 27px;
   }
 
   .card__wrapper__text {
