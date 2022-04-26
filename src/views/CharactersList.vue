@@ -31,7 +31,7 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+store.dispatch('fetchCharacters');
 const characters = computed(() => store.state.charactersModule.characters);
 const loading = computed(() => store.state.charactersModule.isLoading);
 const error = computed(() => store.state.charactersModule.error);

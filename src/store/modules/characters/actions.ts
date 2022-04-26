@@ -1,13 +1,13 @@
 import Api from '@/services/api';
 import { Commit } from 'vuex';
-import { Params } from '@/models/store';
+import { State } from '@/models/store';
 
 export default {
-  async fetchCharacters({ commit }: { commit: Commit }, params: Params | null) {
+  async fetchCharacters({ commit, state }: { commit: Commit; state: State }) {
     commit('setCharacters', []);
     commit('setInitRequest');
     const api = new Api(`${process.env.VUE_APP_RICK_AND_MORTY_API}/character?`);
-    const res = await api.get(params);
+    const res = await api.get(state.filters);
     if (!res.error) {
       commit('setCharacters', res.results);
       commit('setLoading', false);

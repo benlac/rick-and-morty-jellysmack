@@ -6,8 +6,7 @@
         name="status"
         :value="el.value"
         :id="el.id"
-        @input="setVal"
-        @change="setFilter(el.value)"
+        @input="setValueFiltered"
         :checked="valueFiltered === el.value"
       />
       <label :for="el.id">{{ el.id }}</label>
@@ -27,24 +26,17 @@ const status = [
   { id: 'All', value: '' },
 ];
 
-let valueFiltered = computed(() => store.getters.getValueFiltered);
+const valueFiltered = computed(() => store.getters.getValueFiltered);
 
-function setVal(e: any) {
-  store.commit('setFilters', {
-    ...store.state.charactersModule.filters,
-    status: (e.target as HTMLInputElement).value,
-  });
-}
-function setFilter(status: string) {
-  console.log(status);
-  console.log(valueFiltered);
+function setValueFiltered(e: Event) {
   let newObj = { ...store.state.charactersModule.filters };
   delete newObj.page;
   store.commit('setCurrentPage', 1);
   store.commit('setFilters', {
-    ...newObj,
+    ...store.state.charactersModule.filters,
+    status: (e.target as HTMLInputElement).value,
   });
-  store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+  store.dispatch('fetchCharacters');
 }
 </script>
 

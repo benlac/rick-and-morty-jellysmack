@@ -70,7 +70,7 @@ function handlePagination(action: string) {
           page: 1,
         });
         store.commit('setCurrentPage', 1);
-        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+        store.dispatch('fetchCharacters');
       }
       break;
     case 'prev':
@@ -83,7 +83,7 @@ function handlePagination(action: string) {
           'setCurrentPage',
           store.state.charactersModule.currentPage - 1
         );
-        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+        store.dispatch('fetchCharacters');
       }
       break;
     case 'next':
@@ -99,7 +99,7 @@ function handlePagination(action: string) {
           'setCurrentPage',
           store.state.charactersModule.currentPage + 1
         );
-        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+        store.dispatch('fetchCharacters');
       }
       break;
     case 'last':
@@ -112,7 +112,7 @@ function handlePagination(action: string) {
           page: store.state.charactersModule.totalPages,
         });
         store.commit('setCurrentPage', store.state.charactersModule.totalPages);
-        store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+        store.dispatch('fetchCharacters');
       }
       break;
     default:

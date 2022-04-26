@@ -52,7 +52,7 @@ function setSearchValue() {
   store.commit('setFilters', {
     ...newObj,
   });
-  store.dispatch('fetchCharacters', store.state.charactersModule.filters);
+  store.dispatch('fetchCharacters');
 }
 
 function clearFilters() {
