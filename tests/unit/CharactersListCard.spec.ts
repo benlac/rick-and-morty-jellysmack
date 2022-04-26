@@ -1,22 +1,22 @@
 import { shallowMount } from '@vue/test-utils';
-import CharactersCard from '../../src/components/Characters/CharactersCard.vue';
+import CharactersListCard from '../../src/components/Characters/CharactersListCard.vue';
 
-interface CharacterCard {
+interface CharacterListCard {
   id: number;
   name: string;
   image: string;
 }
 
-describe('CharacterCard', () => {
+describe('CharacterListCard', () => {
   test('renders with props', () => {
     const name = 'unit-test-character';
-    const character: CharacterCard = {
+    const character: CharacterListCard = {
       name,
       id: 1,
       image: 'test.png',
     };
 
-    const wrapper = shallowMount(CharactersCard, {
+    const wrapper = shallowMount(CharactersListCard, {
       propsData: character,
     });
 

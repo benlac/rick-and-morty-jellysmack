@@ -11,7 +11,8 @@
     <input
       type="text"
       placeholder="Search for a characters..."
-      v-model.trim="value"
+      :value="message"
+      @input="updateMessage"
       @keyup.enter="setSearchValue"
     />
     <button class="wrapper__input__reset">
@@ -28,13 +29,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-const value = ref<string>('');
 
-const isTyping = computed(() => value.value.length);
+let message = computed(() => store.getters.getName);
+
+function updateMessage(e: Event) {
+  store.commit('setFilters', {
+    ...store.state.charactersModule.filters,
+    name: (e.target as HTMLInputElement).value,
+  });
+}
+
+const isTyping = computed(() => store.getters.isTyping);
 
 function setSearchValue() {
   let newObj = { ...store.state.charactersModule.filters };
@@ -42,13 +51,11 @@ function setSearchValue() {
   store.commit('setCurrentPage', 1);
   store.commit('setFilters', {
     ...newObj,
-    name: value.value,
   });
   store.dispatch('fetchCharacters', store.state.charactersModule.filters);
 }
 
 function clearFilters() {
-  value.value = '';
   store.commit('setFilters', {});
   store.dispatch('fetchCharacters');
 }

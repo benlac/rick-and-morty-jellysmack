@@ -7,4 +7,13 @@ export default {
   getCurrentCharacter(state: State) {
     return state.currentCharacter;
   },
+  getName(state: State) {
+    return state.filters['name'] || '';
+  },
+  isTyping(state: State) {
+    return state.filters['name'] || ''.length;
+  },
+  getValueFiltered(state: State) {
+    return state.filters['status'];
+  },
 };

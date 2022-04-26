@@ -1,37 +1,37 @@
 <template>
   <main class="wrapper__home">
-    <characters-search></characters-search>
-    <characters-filter></characters-filter>
+    <characters-list-search></characters-list-search>
+    <characters-list-filter></characters-list-filter>
     <not-found v-if="error">{{ error }}</not-found>
     <base-spinner
       v-else-if="!characters.length && loading && !error"
     ></base-spinner>
     <div v-else class="wrapper__cards">
-      <characters-card
+      <characters-list-card
         v-for="character in characters"
         :key="character.id"
         :id="character.id"
         :name="character.name"
         :image="character.image"
       >
-      </characters-card>
+      </characters-list-card>
     </div>
   </main>
-  <the-pagination></the-pagination>
+  <characters-list-pagination></characters-list-pagination>
 </template>
 
 <script setup lang="ts">
-import CharactersCard from '@/components/Characters/CharactersCard.vue';
-import CharactersSearch from '@/components/Characters/Filters/CharactersSearch.vue';
-import CharactersFilter from '@/components/Characters/Filters/CharactersFilter.vue';
+import CharactersListCard from '@/components/Characters/CharactersListCard.vue';
+import CharactersListSearch from '@/components/Characters/Filters/CharactersListSearch.vue';
+import CharactersListFilter from '@/components/Characters/Filters/CharactersListFilter.vue';
 import BaseSpinner from '@/components/UI/BaseSpinner.vue';
 import NotFound from '@/views/NotFound.vue';
-import ThePagination from '@/components/Characters/ThePagination.vue';
+import CharactersListPagination from '@/components/Characters/CharactersListPagination.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-store.dispatch('fetchCharacters');
+store.dispatch('fetchCharacters', store.state.charactersModule.filters);
 const characters = computed(() => store.state.charactersModule.characters);
 const loading = computed(() => store.state.charactersModule.isLoading);
 const error = computed(() => store.state.charactersModule.error);
