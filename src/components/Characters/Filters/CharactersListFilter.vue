@@ -33,7 +33,7 @@ function setValueFiltered(e: Event) {
   delete newObj.page;
   store.commit('setCurrentPage', 1);
   store.commit('setFilters', {
-    ...store.state.charactersModule.filters,
+    ...newObj,
     status: (e.target as HTMLInputElement).value,
   });
   store.dispatch('fetchCharacters');
